@@ -1,1 +1,9 @@
-const b=document.getElementById('menu'),n=document.getElementById('nav');b.onclick=()=>{n.classList.toggle('open');b.textContent=n.classList.contains('open')?'×':'☰'};document.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{n.classList.remove('open');b.textContent='☰'});document.getElementById('form').onsubmit=e=>{e.preventDefault();document.getElementById('notice').textContent='این یک فرم نمایشی است؛ برای ثبت واقعی درخواست باید به سامانه ارسال متصل شود.'};
+const menuButton=document.getElementById('menu');const mainNav=document.getElementById('primaryNav');const productsNav=document.getElementById('productsNav');const productsTrigger=productsNav?.querySelector('.nav-trigger');
+function closeMobileNav(){mainNav?.classList.remove('mobile-open');menuButton?.setAttribute('aria-expanded','false');productsNav?.classList.remove('open');productsTrigger?.setAttribute('aria-expanded','false')}
+menuButton?.addEventListener('click',()=>{const opened=mainNav.classList.toggle('mobile-open');menuButton.setAttribute('aria-expanded',String(opened));if(!opened){productsNav?.classList.remove('open');productsTrigger?.setAttribute('aria-expanded','false')}});
+productsTrigger?.addEventListener('click',()=>{const opened=productsNav.classList.toggle('open');productsTrigger.setAttribute('aria-expanded',String(opened))});
+document.querySelectorAll('.main-nav a').forEach(link=>link.addEventListener('click',()=>{if(link.getAttribute('href')?.startsWith('#'))closeMobileNav()}));
+document.addEventListener('click',event=>{if(productsNav&&!productsNav.contains(event.target)&&!menuButton?.contains(event.target)){productsNav.classList.remove('open');productsTrigger?.setAttribute('aria-expanded','false')}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeMobileNav();productsTrigger?.blur()}});
+window.addEventListener('resize',()=>{if(window.innerWidth>760)closeMobileNav()});
+const leadForm=document.getElementById('form');leadForm?.addEventListener('submit',event=>{event.preventDefault();const notice=document.getElementById('notice');if(notice)notice.textContent='این فرم در نسخه نمایشی است و هنوز به سامانه دریافت سفارش متصل نشده است.'});
