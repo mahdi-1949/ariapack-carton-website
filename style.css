@@ -294,3 +294,9 @@ body.nav-is-open{overflow:hidden}
 .site-header .mobile-quote{justify-self:end}
 .site-header .main-nav{left:-5.5556%;right:-5.5556%;width:auto;padding-inline:5.5556%}
 }
+
+
+/* Optical alignment: nudge mobile logo toward the right-side hamburger */
+@media(max-width:760px){
+.site-header .header-brand-group{position:relative;right:clamp(4px,1.4vw,8px)}
+}
