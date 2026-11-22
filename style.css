@@ -265,3 +265,22 @@ body.nav-is-open{overflow:hidden}
 .site-footer .footer-bottom a{display:inline-flex;align-items:center;justify-content:center;border:1px solid #3a5b4c;padding:10px 20px;border-radius:9px;margin-top:6px}
 }
 @media(max-width:360px){.site-footer .footer-main{grid-template-columns:1fr}.site-footer .footer-column{grid-column:1/-1}}
+
+
+/* MOBILE HEADER FINAL: RTL hamburger anchored right, evenly spaced brand and CTA */
+@media(max-width:760px){
+.site-header .header-inner{display:grid!important;grid-template-columns:44px minmax(0,1fr) auto;direction:rtl;align-items:center;column-gap:clamp(10px,3vw,18px);justify-content:initial;height:74px}
+.site-header #menu.mobile-menu-toggle{grid-column:1;grid-row:1;order:unset!important;position:relative;inset:auto;margin:0;justify-self:start;width:44px;height:44px}
+.site-header .header-brand-group{grid-column:2;grid-row:1;order:unset;margin:0!important;min-width:0;justify-self:start}
+.site-header .logo{margin:0!important;white-space:nowrap;gap:8px}
+.site-header .mobile-quote{grid-column:3;grid-row:1;order:unset;justify-self:end;margin:0;min-height:40px}
+.site-header .main-nav{top:100%;height:calc(100dvh - 74px)}
+}
+@media(max-width:390px){
+.site-header .header-inner{grid-template-columns:40px minmax(0,1fr) auto;column-gap:8px}
+.site-header #menu.mobile-menu-toggle{width:40px;height:40px}
+.site-header .logo-symbol{width:32px;height:32px;font-size:20px}
+.site-header .logo-name{font-size:17px}
+.site-header .logo-name small{font-size:5px;letter-spacing:1px}
+.site-header .mobile-quote{font-size:9px;padding:9px 8px;gap:4px}
+}
